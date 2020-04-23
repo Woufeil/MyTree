@@ -1,5 +1,7 @@
 import os
 import sys
+
+
 import colored
 from colored import stylize
 
@@ -9,6 +11,9 @@ def usage():
 
 
 def tree(root, nbindent=1):
+    """ Create a tree
+    nbindent should not be manually set
+    """
     nbfichiers = 0
     nbdossiers = 0
     indent = "\t|" * nbindent
