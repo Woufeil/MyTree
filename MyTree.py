@@ -1,4 +1,5 @@
-import sys,os
+import os
+import sys
 import colored
 from colored import stylize
 
@@ -50,7 +51,7 @@ def main():
             root = sys.argv[1]
     else:
         usage()
-        return 1
+        sys.exit("Wrong parameters")
 
     print(stylize('.', colored.fg("blue")))
     ret = tree(root)
