@@ -1,4 +1,6 @@
 import sys,os
+import colored
+from colored import stylize
 
 
 def usage():
@@ -12,12 +14,12 @@ def tree(root, nbindent=1):
     for item in os.listdir(root):
         # Si c'est un fichier, on affiche son nom
         if os.path.isfile(os.path.join(root, item)):
-            print(f"|{indent[:-2]}---{item}")
+            print(stylize(f"|{indent[:-2]}---{item}", colored.fg("green")))
             nbfichiers += 1
 
         # Si c'est un dossier, on affiche son nom...
         if os.path.isdir(os.path.join(root, item)):
-            print(f"|{indent[:-2]}---{item}")
+            print(stylize(f"|{indent[:-2]}---{item}", colored.fg("blue")))
 
             # ... On augmente l'indetation ...
             nbindent += 1
@@ -50,7 +52,7 @@ def main():
         usage()
         return 1
 
-    print('.')
+    print(stylize('.', colored.fg("blue")))
     ret = tree(root)
     print(f"{ret[0]} fichiers, {ret[1]} dossiers")
 
