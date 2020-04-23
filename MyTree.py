@@ -1,4 +1,8 @@
-import os
+import sys,os
+
+
+def usage():
+    print("Usage: 'python3 MyTree.py' or 'pyhton 3 Mytree.py' \"folder\"")
 
 
 def tree(root, nbindent=1):
@@ -36,7 +40,16 @@ def tree(root, nbindent=1):
 
 
 def main():
-    root = "C:\\Data\\CCNA Wireless Videos"
+    print(sys.argv)
+    if len(sys.argv) == 1:
+        root = "."
+    elif len(sys.argv) == 2:
+        if os.path.exists(sys.argv[1]):
+            root = sys.argv[1]
+    else:
+        usage()
+        return 1
+
     print('.')
     ret = tree(root)
     print(f"{ret[0]} fichiers, {ret[1]} dossiers")
