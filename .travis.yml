@@ -1,0 +1,13 @@
+language: python
+
+python:
+  - 3.8
+
+cache: pip
+
+instal:
+  - pip install colored
+  - pit install pytest
+
+script:
+  - pytest test_Mytree.py
