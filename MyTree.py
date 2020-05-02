@@ -47,16 +47,18 @@ def tree(root, nbindent=1):
     return (nbfichiers, nbdossiers)
 
 
-def main():
-    print(sys.argv)
-    if len(sys.argv) == 1:
-        root = "."
-    elif len(sys.argv) == 2:
-        if os.path.exists(sys.argv[1]):
-            root = sys.argv[1]
+def main(*args):
+    if len(args) == 0:
+        root = os.getcwd()
+    elif len(args) == 1:
+        if os.path.exists(args[0]):
+            root = args[0]
+        else:
+            usage()
+            sys.exit("Wrong parameters")
     else:
         usage()
-        sys.exit("Wrong parameters")
+        sys.exit("Wrong number of parameters")
 
     print(stylize('.', colored.fg("blue")))
     ret = tree(root)
@@ -64,4 +66,7 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    if len(sys.argv) == 1:
+        main()
+    else:
+        main(*sys.argv[1:])
