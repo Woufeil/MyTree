@@ -7,7 +7,7 @@ cache: pip
 
 instal:
   - pip install colored
-  - pit install pytest
+  - pip install pytest
 
 script:
   - pytest test_Mytree.py
